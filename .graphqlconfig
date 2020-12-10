@@ -1,0 +1,15 @@
+{
+  "name": "GraphQL Schema",
+  "schemaPath": "src/schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "https://api.thegraph.com/subgraphs/name/d10r/fdaix-supertoken-subgraph\n",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": false
+      }
+    }
+  }
+}

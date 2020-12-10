@@ -1,0 +1,11 @@
+query Liquidation(
+    $first: Int,
+) {
+    liquidations(first: $first) {
+        id
+        deposit
+        penaltyAccount
+        rewardAccount
+        timestamp
+    }
+}

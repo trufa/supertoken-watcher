@@ -1,28 +1,14 @@
 import React from 'react';
 import './App.css';
-import { useQuery } from 'urql';
 import Address from './components/Address';
-
-const LiquidationQuery = `
-  {
-    liquidations(first: 5) {
-      id
-      penaltyAccount
-      rewardAccount
-      deposit
-      timestamp
-    }
-  }
-`;
+import { useLiquidationQuery } from './generated/graphql';
 
 const App = () => {
-
-  const [{ data: { liquidations }, fetching, error }] = useQuery({
-    query: LiquidationQuery,
+  const [{ data: { liquidations = [] } = {}, fetching, error }] = useLiquidationQuery({
+    variables: {
+      first: 5,
+    },
   });
-  if (fetching) return <p>Loading...</p>;
-  if (error) return <p>Oh no... {error.message}</p>;
-  console.log(liquidations);
   return (
     <div className="container p-10 min-h-screen bg-gray-100 min-w-full">
       <table className="table-auto bg-white bord rounded-md shadow">
@@ -36,16 +22,16 @@ const App = () => {
         </thead>
         <tbody>
         {
-          liquidations.map((liq: any) => (
+          liquidations.map((liq) => (
             <tr>
-              <td className="px-10 py-4">{liq.id}</td>
+              <td className="px-10 py-4">{liq.id.substr(0, 8)}...</td>
               <td className="px-10 py-4">
-                <Address address={liq.penaltyAccount} />
+                <Address address={liq.penaltyAccount}/>
               </td>
               <td className="px-10 py-4">
-                <Address address={liq.rewardAccount} />
+                <Address address={liq.rewardAccount}/>
               </td>
-              <td className="px-10 py-4"><span className="text-green-500">◈</span> 0.2394245</td>
+              <td className="px-10 py-4"><span className="text-green-500">◈</span>{liq.deposit/(10^18)}</td>
             </tr>
           ))
         }
