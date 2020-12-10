@@ -9,6 +9,7 @@ const App = () => {
       first: 5,
     },
   });
+  console.log(fetching, error);
   return (
     <div className="container p-10 min-h-screen bg-gray-100 min-w-full">
       <table className="table-auto bg-white bord rounded-md shadow">
@@ -22,6 +23,7 @@ const App = () => {
         </thead>
         <tbody>
         {
+
           liquidations.map((liq) => (
             <tr>
               <td className="px-10 py-4">{liq.id.substr(0, 8)}...</td>
@@ -31,7 +33,7 @@ const App = () => {
               <td className="px-10 py-4">
                 <Address address={liq.rewardAccount}/>
               </td>
-              <td className="px-10 py-4"><span className="text-green-500">◈</span>{liq.deposit/(10^18)}</td>
+              <td className="px-10 py-4"><span className="text-green-500">◈</span>{liq.deposit / (10 ^ 18)}</td>
             </tr>
           ))
         }
