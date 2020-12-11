@@ -39,6 +39,18 @@ const App = () => {
   const zeroResultsComponent = <tr><td colSpan={5} className="px-10 py-4 text-center">No results to show</td></tr>;
   return (
     <div className="container p-10 min-h-screen bg-gray-100 min-w-full">
+      <div className="text-3xl mb-10">
+        FDAIx Supertoken Subgraph Visualization
+        <a
+          className="text-blue-500 text-base ml-3"
+          rel={'noopener noreferrer'}
+          target={'_blank'}
+          href={"https://thegraph.com/explorer/subgraph/d10r/fdaix-supertoken-subgraph?selected=playground"}
+        >
+          🔗
+        </a>
+      </div>
+
       <div className="inline-block">
         <table className="table-auto bg-white bord rounded-md shadow">
           <thead>
