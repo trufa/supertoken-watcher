@@ -1,18 +1,10 @@
 import Identicon from 'identicon.js';
-import BN from 'bn.js';
 
 export const getIdenticonData = (hash: string): string => {
   return new Identicon(hash, 20).toString();
 };
 
-/**
- * Get the whole and decimal parts from a number.
- * Trims leading and trailing zeroes.
- *
- * @param {any} num the number
- * @returns {Array<string>} array with the [<whole>, <decimal>] parts of the number
- */
-function splitDecimalNumber(num: any) {
+const splitDecimalNumber = (num: any) => {
   let sign = "";
   if (typeof(num) == "number") {
     // to avoid scientific notion (e-) of Number.toString()
@@ -32,16 +24,7 @@ function splitDecimalNumber(num: any) {
   ];
 }
 
-/**
- * Format a decimal-based number back to a normal number
- *
- * @param {string} num the number
- * @param {number} decimals number of decimal places
- * @param {Object} [options] options object
- * @param {bool} [options.truncate=true] Should the number be truncated to its decimal base
- * @returns {string} formatted number
- */
-function fromDecimals(num: string, decimals: number, { truncate = true } = {}) {
+const fromDecimals = (num: string, decimals: number, { truncate = true } = {}) => {
   const [sign, whole, dec] = splitDecimalNumber(num);
   if (!whole && !dec) {
     return "0";

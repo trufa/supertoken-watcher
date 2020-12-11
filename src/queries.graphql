@@ -1,11 +1,20 @@
 query Liquidation(
     $first: Int,
+    $skip: Int,
+    $orderBy: Liquidation_orderBy,
+    $orderDirection: OrderDirection,
 ) {
-    liquidations(first: $first) {
+    liquidations(
+        first: $first,
+        skip: $skip,
+        orderBy: $orderBy,
+        orderDirection: $orderDirection,
+    ) {
         id
         deposit
         penaltyAccount
         rewardAccount
         timestamp
+        __typename
     }
 }
