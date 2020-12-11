@@ -5,6 +5,7 @@ import { Liquidation_OrderBy, OrderDirection, useLiquidationQuery } from './gene
 import { DateTime } from 'luxon';
 import FetchingComponent from './components/FetchingComponent';
 import { wad4human } from './helpers';
+import Spinner from './components/Spinner';
 
 const AMOUNT_LOADED: number = 10;
 
@@ -33,9 +34,9 @@ const App = () => {
       setNextDisabled(false);
     }
   }, [page, liquidations.length, previousDisabled, nextDisabled, liquidations]);
-  const whileFetchingComponent = <tr><td>Fetching</td></tr>;
-  const errorFetchingComponent = <tr><td>Error</td></tr>;
-  const zeroResultsComponent = <tr className="whitespace-nowrap"><td colSpan={5} className="px-10 py-4 text-center">No results to show</td></tr>;
+  const whileFetchingComponent = <tr><td colSpan={5} className="px-10 py-4 text-center"><Spinner /></td></tr>;
+  const errorFetchingComponent = <tr><td colSpan={5} className="px-10 py-4 text-center">Error fetching. Sorry!</td></tr>;
+  const zeroResultsComponent = <tr><td colSpan={5} className="px-10 py-4 text-center">No results to show</td></tr>;
   return (
     <div className="container p-10 min-h-screen bg-gray-100 min-w-full">
       <div className="inline-block">
