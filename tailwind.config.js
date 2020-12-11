@@ -9,6 +9,7 @@ module.exports = {
       textColor: ['disabled'],
       opacity: ['disabled'],
       cursor: ['disabled'],
+      backgroundColor: ['disabled'],
     }
   },
   plugins: [],

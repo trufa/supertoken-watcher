@@ -50,7 +50,24 @@ const App = () => {
           🔗
         </a>
       </div>
-
+      <div className="flex mb-5">
+        <button className="bg-blue-500 text-white text-xs p-2 rounded-lg mr-3 focus:outline-none">Liquidations</button>
+        <button
+          disabled={true}
+          className="
+            bg-blue-500
+            text-white
+            text-xs p-2
+            rounded-lg mr-3
+            disabled:bg-gray-300
+            disabled:opacity-50
+            disabled:text-gray-900
+            cursor-not-allowed
+            "
+        >
+          More coming soon
+        </button>
+      </div>
       <div className="inline-block">
         <table className="table-auto bg-white bord rounded-md shadow">
           <thead>
@@ -101,14 +118,14 @@ const App = () => {
         <div className="flex justify-between">
           <button
             disabled={previousDisabled}
-            className="text-blue-500 block cursor-pointer disabled:text-gray-500 disabled:opacity-50 disabled:cursor-auto"
+            className="text-blue-500 block cursor-pointer disabled:text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={() => setPage(page => page - 1)}
           >
             ← Prev
           </button>
           <button
             disabled={nextDisabled}
-            className="text-blue-500 block cursor-pointer disabled:text-gray-500 disabled:opacity-50 disabled:cursor-auto"
+            className="text-blue-500 block cursor-pointer disabled:text-gray-500 disabled:opacity-50 disabled:cursor-not-allowed"
             onClick={() => setPage(page => page + 1)}
           >
             Next →
